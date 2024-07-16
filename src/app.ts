@@ -7,8 +7,6 @@ normalMiddleware(app);
 
 // "/api/";
 
-
-
 app.get("/", (req: Request, res: Response) => {
   res.send("Level-2 setup ");
 });

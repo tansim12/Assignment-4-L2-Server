@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 import { TProduct } from "./Product.interface";
 
 const productSchema = new Schema<TProduct>(
@@ -24,7 +24,7 @@ const productSchema = new Schema<TProduct>(
     isDelete: { type: Boolean, required: true, default: false },
     specification: { type: String, required: true },
     shoppingInfo: { type: String, required: true },
-    sellerProfile: { type: String, required: true },
+    sellerProfile: { type: Types.ObjectId, required: true },
   },
   {
     timestamps: true,

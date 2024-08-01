@@ -1,3 +1,5 @@
+import { Schema } from "mongoose";
+
 export interface TProduct {
     name: string;
     title: string;
@@ -16,6 +18,6 @@ export interface TProduct {
     isDelete: boolean;
     specification: string;
     shoppingInfo: string;
-    sellerProfile: string;
+    sellerProfile: Schema.Types.ObjectId;
   }
   

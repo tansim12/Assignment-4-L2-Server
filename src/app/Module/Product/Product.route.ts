@@ -9,5 +9,10 @@ router.post(
   validationMiddleWare(productZodValidation.ProductSchemaZod),
   productController.addProducts
 );
+router.delete(
+  "/delete-product/:id",
+  
+  productController.deleteProducts
+);
 
 export const productRoute = router

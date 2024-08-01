@@ -1,18 +1,32 @@
-import httpStatus from "http-status"
-import AppError from "../../Error-Handle/AppError"
-import { TProduct } from "./Product.interface"
-import { ProductModel } from "./Product.model"
+import httpStatus from "http-status";
+import AppError from "../../Error-Handle/AppError";
+import { TProduct } from "./Product.interface";
+import { ProductModel } from "./Product.model";
 
-const addProductsDB = async(body:TProduct)=>{
-const result = await ProductModel.create(body)
-if (!result) {
-    throw new  AppError(httpStatus.BAD_REQUEST,"Product Created Failed !")
-}
-return result
+const addProductsDB = async (body: TProduct) => {
+  const result = await ProductModel.create(body);
+  if (!result) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Product Created Failed !");
+  }
+  return result;
+};
 
-
-}
-
-export const productService ={
-    addProductsDB
-}
+const deleteProductsDB = async (id: string) => {
+  const product = await ProductModel.findById(id).select("isDelete");
+  if (!product) {
+    throw new AppError(httpStatus.NOT_FOUND, "This product not found !");
+  }
+  const result = await ProductModel.findByIdAndUpdate(
+    id,
+    { isDelete: true },
+    { upsert: true }
+  );
+  if (!result) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Product delete failed !");
+  }
+  return result
+};
+export const productService = {
+  addProductsDB,
+  deleteProductsDB,
+};

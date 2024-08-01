@@ -2,6 +2,8 @@ import httpStatus from "http-status";
 import AppError from "../../Error-Handle/AppError";
 import { TProduct } from "./Product.interface";
 import { ProductModel } from "./Product.model";
+import QueryBuilder from "../../Builder/QueryBuilder";
+import { productsSearchAbleFields } from "./Product.const";
 
 const addProductsDB = async (body: TProduct) => {
   const result = await ProductModel.create(body);
@@ -55,19 +57,25 @@ const findOneProductsDB = async (id: string) => {
   return result;
 };
 
-
 // find all
-const findAllProductsDB = async (queryObj:Record<string,unknown>) => {
-  console.log(queryObj);
+const findAllProductsDB = async (query: Record<string, unknown>) => {
   
-  const result = await ProductModel.find({ isDelete: false });
+  const productQuery = new QueryBuilder(
+    ProductModel.find({ isDelete: false }),
+    query
+  )
+    .search(productsSearchAbleFields)
+    .sort()
+    .filter()
+    .paginate();
+
+  const result = await productQuery.modelQuery;
   if (!result.length) {
     throw new AppError(httpStatus.NOT_FOUND, "Product are not found !");
   }
 
   return result;
 };
-
 
 export const productService = {
   addProductsDB,

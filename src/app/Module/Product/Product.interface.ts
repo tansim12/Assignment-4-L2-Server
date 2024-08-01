@@ -15,6 +15,7 @@ export interface TProduct {
     color: string[];
     materials: string;
     quantity: number;
+    order?:number
     isDelete: boolean;
     specification: string;
     shoppingInfo: string;

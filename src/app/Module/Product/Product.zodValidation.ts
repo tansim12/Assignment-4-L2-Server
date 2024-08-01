@@ -28,6 +28,7 @@ const ProductSchemaZod = z.object({
       .int()
       .min(1)
       .max(100, "Quantity must be between 1 and 10"),
+      order:z.number().optional(),
     isDelete: z.boolean().default(false),
     specification: z.string().nonempty("Specification is required"),
     shoppingInfo: z.string().nonempty("Shopping Info is required"),
@@ -77,6 +78,7 @@ const UpdateProductSchemaZod = z.object({
       .min(1)
       .max(100, "Quantity must be between 1 and 10")
       .optional(),
+      order:z.number().optional(),
     isDelete: z.boolean().default(false).optional(),
     specification: z.string().nonempty("Specification is required").optional(),
     shoppingInfo: z.string().nonempty("Shopping Info is required").optional(),

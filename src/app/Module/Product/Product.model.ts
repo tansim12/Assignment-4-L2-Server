@@ -21,6 +21,7 @@ const productSchema = new Schema<TProduct>(
     color: { type: [String], required: true },
     materials: { type: String, required: true },
     quantity: { type: Number, required: true , min:1, max:10 },
+    order:{type:Number},
     isDelete: { type: Boolean, required: true, default: false },
     specification: { type: String, required: true },
     shoppingInfo: { type: String, required: true },

@@ -5,7 +5,7 @@ import { productController } from "./Product.controller";
 const router = express.Router();
 
 router.post(
-  "/add-product",
+  "/",
   validationMiddleWare(productZodValidation.ProductSchemaZod),
   productController.addProducts
 );
@@ -15,5 +15,6 @@ router.put(
   productController.updateProduct
 );
 router.delete("/delete-product/:id", productController.deleteProducts);
+router.get("/", productController.findAllProducts);
 
 export const productRoute = router;

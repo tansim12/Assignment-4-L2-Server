@@ -42,8 +42,17 @@ const updateProductDB = async (id: string, queryObj: Partial<TProduct>) => {
   }
   return result
 };
+
+const findAllProductsDB = async()=>{
+  const result = await ProductModel.find()
+  if (!result.length) {
+    throw new AppError(httpStatus.NOT_FOUND, "Product are not found !");
+  }
+
+  return result
+}
 export const productService = {
   addProductsDB,
   deleteProductsDB,
-  updateProductDB,
+  updateProductDB,findAllProductsDB
 };

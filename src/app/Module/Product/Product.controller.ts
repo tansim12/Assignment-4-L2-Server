@@ -20,8 +20,19 @@ const deleteProducts: RequestHandler = async (req, res, next) => {
 };
 const updateProduct: RequestHandler = async (req, res, next) => {
   try {
-    const result = await productService.updateProductDB(req?.params?.id,req.body);
+    const result = await productService.updateProductDB(
+      req?.params?.id,
+      req.body
+    );
     res.send(successResponse(result, 200, "Product Update Successfully Done"));
+  } catch (error) {
+    next(error);
+  }
+};
+const findAllProducts: RequestHandler = async (req, res, next) => {
+  try {
+    const result = await productService.findAllProductsDB();
+    res.send(successResponse(result, 200, "Product Find Successfully Done"));
   } catch (error) {
     next(error);
   }
@@ -29,5 +40,7 @@ const updateProduct: RequestHandler = async (req, res, next) => {
 
 export const productController = {
   addProducts,
-  deleteProducts,updateProduct
+  deleteProducts,
+  updateProduct,
+  findAllProducts,
 };

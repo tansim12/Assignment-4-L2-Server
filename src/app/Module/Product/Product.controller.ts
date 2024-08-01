@@ -10,6 +10,7 @@ const addProducts: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+// delete one 
 const deleteProducts: RequestHandler = async (req, res, next) => {
   try {
     const result = await productService.deleteProductsDB(req?.params?.id);
@@ -18,6 +19,8 @@ const deleteProducts: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+// update one 
 const updateProduct: RequestHandler = async (req, res, next) => {
   try {
     const result = await productService.updateProductDB(
@@ -29,9 +32,21 @@ const updateProduct: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+// find one  
+const findOneProduct: RequestHandler = async (req, res, next) => {
+  try {
+    const result = await productService.findOneProductsDB(req?.params?.id);
+    res.send(successResponse(result, 200, "Product Find Successfully Done"));
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+// find all 
 const findAllProducts: RequestHandler = async (req, res, next) => {
   try {
-    const result = await productService.findAllProductsDB();
+    const result = await productService.findAllProductsDB(req?.query);
     res.send(successResponse(result, 200, "Product Find Successfully Done"));
   } catch (error) {
     next(error);
@@ -43,4 +58,5 @@ export const productController = {
   deleteProducts,
   updateProduct,
   findAllProducts,
+  findOneProduct,
 };

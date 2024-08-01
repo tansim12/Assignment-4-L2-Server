@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const ProductSchemaZod = z.object({
+const ProductSchemaZod = z.object({
   body: z.object({
     name: z.string().nonempty("Name is required"),
     title: z.string().nonempty("Title is required"),
@@ -34,7 +34,57 @@ export const ProductSchemaZod = z.object({
     sellerProfile: z.string().nonempty("Seller Profile is required"),
   }),
 });
+const UpdateProductSchemaZod = z.object({
+  body: z.object({
+    name: z.string().nonempty("Name is required").optional(),
+    title: z.string().nonempty("Title is required").optional(),
+    image: z
+      .array(z.string().url("Invalid image URL"))
+      .nonempty("Image is required")
+      .optional(),
+    ShortDescription: z
+      .string()
+      .nonempty("Short Description is required")
+      .optional(),
+    description: z
+      .array(z.string().nonempty("Description is required"))
+      .nonempty("Description is required")
+      .optional(),
+    price: z.number().min(0, "Price must be a positive number").optional(),
+    discount: z
+      .number()
+      .min(0, "Discount must be a positive number")
+      .optional(),
+    rating: z
+      .number()
+      .min(0)
+      .max(5, "Rating must be between 0 and 5")
+      .optional(),
+    availability: z
+      .enum(["inStock", "pre-order", "upcoming"], {
+        errorMap: () => ({ message: "Invalid availability status" }),
+      })
+      .optional(),
+    brand: z.string().nonempty("Brand is required").optional(),
+    type: z.string().nonempty("Type is required").optional(),
+    color: z
+      .array(z.string().nonempty("Color is required"))
+      .nonempty("Color is required"),
+    materials: z.string().nonempty("Materials is required").optional(),
+    quantity: z
+      .number()
+      .int()
+      .min(1)
+      .max(100, "Quantity must be between 1 and 10")
+      .optional(),
+    isDelete: z.boolean().default(false).optional(),
+    specification: z.string().nonempty("Specification is required").optional(),
+    shoppingInfo: z.string().nonempty("Shopping Info is required").optional(),
+    sellerProfile: z.string().nonempty("Seller Profile is required").optional(),
+  }),
+});
 
 export const productZodValidation = {
   ProductSchemaZod,
+  UpdateProductSchemaZod,
 };

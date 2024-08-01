@@ -24,9 +24,26 @@ const deleteProductsDB = async (id: string) => {
   if (!result) {
     throw new AppError(httpStatus.BAD_REQUEST, "Product delete failed !");
   }
+  return result;
+};
+
+const updateProductDB = async (id: string, queryObj: Partial<TProduct>) => {
+  const product = await ProductModel.findById(id).select("isDelete");
+  if (!product) {
+    throw new AppError(httpStatus.NOT_FOUND, "This product not found !");
+  }
+  const result = await ProductModel.findByIdAndUpdate(
+    id,
+    { $set: { ...queryObj } },
+    { upsert: true, new: true }
+  );
+  if (!result) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Product Update Failed !");
+  }
   return result
 };
 export const productService = {
   addProductsDB,
   deleteProductsDB,
+  updateProductDB,
 };

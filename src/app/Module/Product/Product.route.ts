@@ -5,14 +5,15 @@ import { productController } from "./Product.controller";
 const router = express.Router();
 
 router.post(
-  "/add-products",
+  "/add-product",
   validationMiddleWare(productZodValidation.ProductSchemaZod),
   productController.addProducts
 );
-router.delete(
-  "/delete-product/:id",
-  
-  productController.deleteProducts
+router.put(
+  "/update-product/:id",
+  validationMiddleWare(productZodValidation.UpdateProductSchemaZod),
+  productController.updateProduct
 );
+router.delete("/delete-product/:id", productController.deleteProducts);
 
-export const productRoute = router
+export const productRoute = router;

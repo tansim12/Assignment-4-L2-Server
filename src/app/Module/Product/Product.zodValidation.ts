@@ -4,6 +4,7 @@ const ProductSchemaZod = z.object({
   body: z.object({
     name: z.string().nonempty("Name is required"),
     title: z.string().nonempty("Title is required"),
+    category: z.string().nonempty("Category is required"),
     image: z
       .array(z.string().url("Invalid image URL"))
       .nonempty("Image is required"),
@@ -28,7 +29,7 @@ const ProductSchemaZod = z.object({
       .int()
       .min(1)
       .max(100, "Quantity must be between 1 and 10"),
-      order:z.number().optional(),
+    order: z.number().optional(),
     isDelete: z.boolean().default(false),
     specification: z.string().nonempty("Specification is required"),
     shoppingInfo: z.string().nonempty("Shopping Info is required"),
@@ -39,6 +40,7 @@ const UpdateProductSchemaZod = z.object({
   body: z.object({
     name: z.string().nonempty("Name is required").optional(),
     title: z.string().nonempty("Title is required").optional(),
+    category: z.string().nonempty("Category is required").optional(),
     image: z
       .array(z.string().url("Invalid image URL"))
       .nonempty("Image is required")
@@ -78,7 +80,7 @@ const UpdateProductSchemaZod = z.object({
       .min(1)
       .max(100, "Quantity must be between 1 and 10")
       .optional(),
-      order:z.number().optional(),
+    order: z.number().optional(),
     isDelete: z.boolean().default(false).optional(),
     specification: z.string().nonempty("Specification is required").optional(),
     shoppingInfo: z.string().nonempty("Shopping Info is required").optional(),

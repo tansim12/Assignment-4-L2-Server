@@ -5,6 +5,7 @@ const productSchema = new Schema<TProduct>(
   {
     name: { type: String, required: true },
     title: { type: String, required: true },
+    category: { type: String, required: true },
     image: { type: [String], required: true },
     ShortDescription: { type: String, required: true },
     description: { type: [String], required: true },
@@ -21,7 +22,7 @@ const productSchema = new Schema<TProduct>(
     color: { type: [String], required: true },
     materials: { type: String, required: true },
     quantity: { type: Number, required: true , min:1, max:10 },
-    order:{type:Number},
+    order:{type:Number, default:0},
     isDelete: { type: Boolean, required: true, default: false },
     specification: { type: String, required: true },
     shoppingInfo: { type: String, required: true },

@@ -5,7 +5,7 @@ export interface TProduct {
   category: string;
   title: string;
   image: string[];
-  ShortDescription: string;
+  shortDescription: string;
   description: string[];
   price: number;
   discount: number;

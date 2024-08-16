@@ -1,7 +1,7 @@
 export const productsSearchAbleFields = [
   "name",
   "title",
-  "ShortDescription",
+  "shortDescription",
   "brand",
   "specification",
   "type",

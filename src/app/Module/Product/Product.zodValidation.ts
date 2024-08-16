@@ -8,7 +8,7 @@ const ProductSchemaZod = z.object({
     image: z
       .array(z.string().url("Invalid image URL"))
       .nonempty("Image is required"),
-    ShortDescription: z.string().nonempty("Short Description is required"),
+    shortDescription: z.string().nonempty("Short Description is required"),
     description: z
       .array(z.string().nonempty("Description is required"))
       .nonempty("Description is required"),
@@ -45,7 +45,7 @@ const UpdateProductSchemaZod = z.object({
       .array(z.string().url("Invalid image URL"))
       .nonempty("Image is required")
       .optional(),
-    ShortDescription: z
+    shortDescription: z
       .string()
       .nonempty("Short Description is required")
       .optional(),

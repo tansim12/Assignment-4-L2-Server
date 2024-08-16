@@ -22,7 +22,7 @@ const productSchema = new Schema<TProduct>(
     type: { type: String,enum:productTypes, required: true },
     color: { type: [String], required: true },
     materials: { type: String, required: true },
-    quantity: { type: Number, required: true, min: 1, max: 10 },
+    quantity: { type: Number, required: true, min: 1, max: 100 },
     order: { type: Number, default: 0 },
     isDelete: { type: Boolean, required: true, default: false },
     specification: { type: String, required: true },

@@ -1,11 +1,12 @@
 import mongoose, { Schema, Types } from "mongoose";
 import { TProduct } from "./Product.interface";
+import { allCategoryArray, productTypes } from "./Product.const";
 
 const productSchema = new Schema<TProduct>(
   {
     name: { type: String, required: true },
     title: { type: String, required: true },
-    category: { type: String, required: true },
+    category: { type: String, enum: allCategoryArray, required: true },
     image: { type: [String], required: true },
     shortDescription: { type: String, required: true },
     description: { type: [String], required: true },
@@ -18,11 +19,11 @@ const productSchema = new Schema<TProduct>(
       required: true,
     },
     brand: { type: String, required: true },
-    type: { type: String, required: true },
+    type: { type: String,enum:productTypes, required: true },
     color: { type: [String], required: true },
     materials: { type: String, required: true },
-    quantity: { type: Number, required: true , min:1, max:10 },
-    order:{type:Number, default:0},
+    quantity: { type: Number, required: true, min: 1, max: 10 },
+    order: { type: Number, default: 0 },
     isDelete: { type: Boolean, required: true, default: false },
     specification: { type: String, required: true },
     shoppingInfo: { type: String, required: true },

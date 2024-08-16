@@ -1,8 +1,21 @@
 import { Schema } from "mongoose";
 
+export type TCategory =
+  | "Tents & Shelters"
+  | "Sleeping Gear"
+  | "Camp Furniture"
+  | "Cooking Equipment"
+  | "Backpacks & Bags"
+  | "Lighting & Lanterns"
+  | "First Aid & Survival"
+  | "Clothing & Apparel"
+  | "Footwear"
+  | "Navigation & Tech";
+export type TProductTypes = "Featured" | "New Arrival";
+
 export interface TProduct {
   name: string;
-  category: string;
+  category: TCategory;
   title: string;
   image: string[];
   shortDescription: string;
@@ -12,7 +25,7 @@ export interface TProduct {
   rating: number;
   availability: "inStock" | "pre-order" | "upcoming";
   brand: string;
-  type: string;
+  type: TProductTypes;
   color: string[];
   materials: string;
   quantity: number;

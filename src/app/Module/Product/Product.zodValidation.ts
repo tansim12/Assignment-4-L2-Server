@@ -1,10 +1,13 @@
 import { z } from "zod";
+import { allCategoryArray, productTypes } from "./Product.const";
 
 const ProductSchemaZod = z.object({
   body: z.object({
     name: z.string().nonempty("Name is required"),
     title: z.string().nonempty("Title is required"),
-    category: z.string().nonempty("Category is required"),
+    category: z.enum(allCategoryArray as [string, ...string[]], {
+      errorMap: () => ({ message: "Invalid Category status" }),
+    }),
     image: z
       .array(z.string().url("Invalid image URL"))
       .nonempty("Image is required"),
@@ -19,7 +22,9 @@ const ProductSchemaZod = z.object({
       errorMap: () => ({ message: "Invalid availability status" }),
     }),
     brand: z.string().nonempty("Brand is required"),
-    type: z.string().nonempty("Type is required"),
+    type: z.enum(productTypes as [string, ...string[]], {
+      errorMap: () => ({ message: "Invalid Product Types" }),
+    }),
     color: z
       .array(z.string().nonempty("Color is required"))
       .nonempty("Color is required"),
@@ -40,7 +45,11 @@ const UpdateProductSchemaZod = z.object({
   body: z.object({
     name: z.string().nonempty("Name is required").optional(),
     title: z.string().nonempty("Title is required").optional(),
-    category: z.string().nonempty("Category is required").optional(),
+    category: z
+      .enum(allCategoryArray as [string, ...string[]], {
+        errorMap: () => ({ message: "Invalid Category status" }),
+      })
+      .optional(),
     image: z
       .array(z.string().url("Invalid image URL"))
       .nonempty("Image is required")
@@ -68,7 +77,11 @@ const UpdateProductSchemaZod = z.object({
         errorMap: () => ({ message: "Invalid availability status" }),
       })
       .optional(),
-    brand: z.string().nonempty("Brand is required").optional(),
+    brand: z
+      .enum(productTypes as [string, ...string[]], {
+        errorMap: () => ({ message: "Invalid Product Types" }),
+      })
+      .optional(),
     type: z.string().nonempty("Type is required").optional(),
     color: z
       .array(z.string().nonempty("Color is required"))
@@ -78,7 +91,7 @@ const UpdateProductSchemaZod = z.object({
       .number()
       .int()
       .min(1)
-      .max(100, "Quantity must be between 1 and 10")
+      .max(100, "Quantity must be between 1 and 100")
       .optional(),
     order: z.number().optional(),
     isDelete: z.boolean().default(false).optional(),

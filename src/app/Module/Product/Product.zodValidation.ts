@@ -77,12 +77,10 @@ const UpdateProductSchemaZod = z.object({
         errorMap: () => ({ message: "Invalid availability status" }),
       })
       .optional(),
-    brand: z
-      .enum(productTypes as [string, ...string[]], {
+      brand: z.string().nonempty("Brand is required").optional(),
+      type: z.enum(productTypes as [string, ...string[]], {
         errorMap: () => ({ message: "Invalid Product Types" }),
-      })
-      .optional(),
-    type: z.string().nonempty("Type is required").optional(),
+      }).optional(),
     color: z
       .array(z.string().nonempty("Color is required"))
       .nonempty("Color is required"),

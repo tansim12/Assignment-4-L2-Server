@@ -59,7 +59,6 @@ const findOneProductsDB = async (id: string) => {
 
 // find all
 const findAllProductsDB = async (query: Record<string, unknown>) => {
-  
   const productQuery = new QueryBuilder(
     ProductModel.find({ isDelete: false }),
     query
@@ -67,14 +66,19 @@ const findAllProductsDB = async (query: Record<string, unknown>) => {
     .search(productsSearchAbleFields)
     .sort()
     .filter()
-    .paginate();
+    .paginate()
+    .fields();
 
+  const totalDataCount = await ProductModel.estimatedDocumentCount();
   const result = await productQuery.modelQuery;
   if (!result.length) {
     throw new AppError(httpStatus.NOT_FOUND, "Product are not found !");
   }
 
-  return result;
+  return {
+    result,
+    totalDataCount,
+  };
 };
 
 export const productService = {

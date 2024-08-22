@@ -8,7 +8,7 @@ export const productsSearchAbleFields = [
   "category",
 ];
 
-export const allCategoryArray =[
+export const allCategoryArray = [
   "Tents & Shelters",
   "Sleeping Gear",
   "Camp Furniture",
@@ -18,9 +18,12 @@ export const allCategoryArray =[
   "First Aid & Survival",
   "Clothing & Apparel",
   "Footwear",
-  "Navigation & Tech"
-]
-export const productTypes =[
-  "Featured",
-  "New Arrival",
-]
+  "Navigation & Tech",
+];
+export const productTypes = ["Featured", "New Arrival"];
+export const productAvailable = [
+  "inStock",
+  "pre-order",
+  "upcoming",
+  "stock-out",
+];

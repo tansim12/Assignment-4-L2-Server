@@ -18,7 +18,7 @@ const ProductSchemaZod = z.object({
     price: z.number().min(0, "Price must be a positive number"),
     discount: z.number().min(0, "Discount must be a positive number"),
     rating: z.number().min(0).max(5, "Rating must be between 0 and 5"),
-    availability: z.enum(["inStock", "pre-order", "upcoming"], {
+    availability: z.enum(["inStock", "pre-order", "upcoming","stock-out"], {
       errorMap: () => ({ message: "Invalid availability status" }),
     }),
     brand: z.string().nonempty("Brand is required"),
@@ -73,7 +73,7 @@ const UpdateProductSchemaZod = z.object({
       .max(5, "Rating must be between 0 and 5")
       .optional(),
     availability: z
-      .enum(["inStock", "pre-order", "upcoming"], {
+      .enum(["inStock", "pre-order", "upcoming","stock-out"], {
         errorMap: () => ({ message: "Invalid availability status" }),
       })
       .optional(),

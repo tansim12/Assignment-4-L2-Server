@@ -12,7 +12,7 @@ export type TCategory =
   | "Footwear"
   | "Navigation & Tech";
 export type TProductTypes = "Featured" | "New Arrival";
-// export type TAvailability = "inStock" | "pre-order" | "upcoming";
+export type TAvailability = "inStock" | "pre-order" | "upcoming"| "stock-out";
 
 
 export interface TProduct {
@@ -25,7 +25,7 @@ export interface TProduct {
   price: number;
   discount: number;
   rating: number;
-  availability: "inStock" | "pre-order" | "upcoming";
+  availability: TAvailability;
   brand: string;
   type: TProductTypes;
   color: string[];

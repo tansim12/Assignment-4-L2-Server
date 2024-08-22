@@ -15,7 +15,7 @@ const productSchema = new Schema<TProduct>(
     rating: { type: Number, required: true },
     availability: {
       type: String,
-      enum: ["inStock", "pre-order", "upcoming"],
+      enum: ["inStock", "pre-order", "upcoming","stock-out"],
       required: true,
     },
     brand: { type: String, required: true },

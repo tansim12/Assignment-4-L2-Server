@@ -12,6 +12,8 @@ export type TCategory =
   | "Footwear"
   | "Navigation & Tech";
 export type TProductTypes = "Featured" | "New Arrival";
+// export type TAvailability = "inStock" | "pre-order" | "upcoming";
+
 
 export interface TProduct {
   name: string;

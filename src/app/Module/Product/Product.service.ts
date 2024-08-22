@@ -70,7 +70,7 @@ const findAllProductsDB = async (query: Record<string, unknown>) => {
     .fields();
 
   const result = await productQuery.modelQuery;
-  const totalDataCount = result?.length
+  const totalDataCount = await ProductModel.estimatedDocumentCount()
   if (!result.length) {
     throw new AppError(httpStatus.NOT_FOUND, "Product are not found !");
   }

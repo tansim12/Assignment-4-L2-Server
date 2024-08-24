@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import globalErrorHandler from "../src/app/Error-Handle/globalErrorHandle";
 import normalMiddleware from "../src/app/middleware/normalMiddleware";
 import { productRoute } from "./app/Module/Product/Product.route";
+import { checkOutRoute } from "./app/Module/Check Out/CheckOut.route";
 
 const app: Application = express();
 normalMiddleware(app);
@@ -9,6 +10,7 @@ normalMiddleware(app);
 // "/api/";
 
 app.use("/api/v1/products",productRoute)
+app.use("/api/v1/checkout",checkOutRoute)
 
 
 

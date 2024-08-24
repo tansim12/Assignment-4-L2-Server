@@ -27,3 +27,16 @@ export const productAvailable = [
   "upcoming",
   "stock-out",
 ];
+
+
+export const availableProduct: {
+  INSTOCK: string;
+  PREORDER: string;
+  UPCOMING: string;
+  STOCKOUT: string;
+} = {
+  INSTOCK: "inStock",
+  PREORDER: "pre-order",
+  UPCOMING: "upcoming",
+  STOCKOUT: "stock-out",
+};

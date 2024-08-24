@@ -5,7 +5,7 @@ import cors from "cors";
 const normalMiddleware = (app: Application) => {
   app.use(
     cors({
-      origin: ["http://localhost:5173", "http://localhost:5174"],
+      origin: ["http://localhost:5173", "http://localhost:5174","https://whimsical-salmiakki-b382e4.netlify.app"],
       credentials: true,
     }),
   );

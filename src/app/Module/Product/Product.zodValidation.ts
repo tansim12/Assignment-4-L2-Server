@@ -88,8 +88,8 @@ const UpdateProductSchemaZod = z.object({
     quantity: z
       .number()
       .int()
-      .min(1)
-      .max(100, "Quantity must be between 1 and 100")
+      .min(0)
+      .max(100, "Quantity must be between 0 and 100")
       .optional(),
     order: z.number().optional(),
     isDelete: z.boolean().default(false).optional(),

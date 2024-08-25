@@ -1,12 +1,12 @@
 
-# Car Rental Reservation System Backend 
+# Campers Shop E-commerce Backend 
 
 ##  Introduction
-This is the backend for a Car Rental Reservation System. It handles CRUD operations for cars, bookings, user authentication, and authorization. The project is built with Node.js, Express.js, TypeScript, and MongoDB.
+This is the backend for a Campers Shop E-commerce. It handles CRUD operations for create product, update products, delete product and order place. The project is built with Node.js, Express.js, TypeScript, and MongoDB.
 
 ## 🔗 Live URL
 
-[Car Rental Reservation System](https://assignment-3-l2-theta.vercel.app)
+[Car Rental Reservation System](https://assignment-4-l2-server.vercel.app)
 
 
 ## Technologies Used
@@ -15,30 +15,11 @@ This is the backend for a Car Rental Reservation System. It handles CRUD operati
 - TypeScript
 - MongoDB
 - Mongoose
-- JWT
-- Zod
-- Bcrypt
-
-
-## Features
-- User Authentication and Authorization (JWT-based)
-- CRUD Operations for Cars
-- Booking System for Renting Cars
-- Middleware for Error Handling
-- Input Validation using Zod
-- Transaction and Rollback (if necessary)
-
-- **Order Management**
-  - Create a new order
-  - Retrieve all orders
-  - Retrieve orders by user email
-  - Update inventory when an order is created
-
 
  **Clone the repository**
 
    ```sh
-   git clone https://github.com/mdrafi276/Car-Rental-Reservation-System-Backend.git
+   git clone https://github.com/tansim12/Assignment-4-L2-Server.git
 
    cd Car-Rental-Reservation-System-Backend
   

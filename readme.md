@@ -6,7 +6,7 @@ This is the backend for a Campers Shop E-commerce. It handles CRUD operations fo
 
 ## 🔗 Live URL
 
-[Car Rental Reservation System](https://assignment-4-l2-server.vercel.app)
+[Campers Shop ](https://assignment-4-l2-server.vercel.app)
 
 
 ## Technologies Used
